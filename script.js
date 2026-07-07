@@ -24,6 +24,93 @@ if (navToggle && mainNav) {
   });
 }
 
+// ---- Chiffres clés animés --------------------------------------------------
+//
+// ⚠️ Les valeurs comptées viennent des attributs data-target dans index.html
+// (section id="chiffres"). Ce sont des chiffres d'EXEMPLE. Remplacez-les par
+// les vrais totaux (étudiants formés, enseignants, ouvrages publiés) avant
+// la mise en ligne — un chiffre invérifiable qui circule publiquement peut
+// se retourner contre la crédibilité de l'institut si quelqu'un le conteste.
+//
+const counters = document.querySelectorAll("[data-counter]");
+
+function animateCounter(el) {
+  const target = el.hasAttribute("data-target-since")
+    ? new Date().getFullYear() - parseInt(el.getAttribute("data-target-since"), 10)
+    : parseInt(el.getAttribute("data-target"), 10);
+
+  if (Number.isNaN(target)) return;
+
+  const duration = 1400;
+  const start = performance.now();
+
+  function tick(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+    el.textContent = Math.round(eased * target).toLocaleString("fr-FR");
+    if (progress < 1) {
+      requestAnimationFrame(tick);
+    } else {
+      el.textContent = target.toLocaleString("fr-FR");
+    }
+  }
+  requestAnimationFrame(tick);
+}
+
+if (counters.length) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.4 }
+  );
+  counters.forEach((el) => observer.observe(el));
+}
+
+// ---- Galerie -> lightbox ----------------------------------------------------
+const galleryItems = document.querySelectorAll(".gallery-item");
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxCaption = document.getElementById("lightboxCaption");
+const lightboxClose = document.getElementById("lightboxClose");
+
+function openLightbox(item) {
+  const img = item.querySelector("img");
+  lightboxImage.src = img.src;
+  lightboxImage.alt = img.alt;
+  lightboxCaption.textContent = item.getAttribute("data-caption") || "";
+  lightbox.hidden = false;
+  lightboxClose.focus();
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+  lightbox.hidden = true;
+  lightboxImage.src = "";
+  document.body.style.overflow = "";
+}
+
+galleryItems.forEach((item) => {
+  item.addEventListener("click", () => openLightbox(item));
+});
+
+if (lightboxClose) {
+  lightboxClose.addEventListener("click", closeLightbox);
+}
+if (lightbox) {
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+}
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && lightbox && !lightbox.hidden) closeLightbox();
+});
+
 // ---- Formulaire de contact -> envoi d'email via EmailJS -------------------
 //
 // ATTENTION — configuration requise avant mise en ligne :
