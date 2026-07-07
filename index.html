@@ -90,6 +90,33 @@
     </div>
   </section>
 
+  <!-- CHIFFRES CLÉS -->
+  <section class="section stats-section" id="chiffres">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--red">L'ISMGL en chiffres</p>
+      <h2 class="section-title">Une institution qui forme, publie et transmet</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number" data-counter data-target="500" data-suffix="+">0</span>
+          <span class="stat-label">Étudiants déjà formés</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" data-counter data-target="25" data-suffix="+">0</span>
+          <span class="stat-label">Enseignants qualifiés</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" data-counter data-target="15" data-suffix="+">0</span>
+          <span class="stat-label">Ouvrages publiés</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" data-counter data-target-since="2011">0</span>
+          <span class="stat-label">Années au service des Grands Lacs</span>
+        </div>
+      </div>
+      <p class="stats-disclaimer">⚠️ Chiffres d'exemple — à remplacer par les vrais totaux avant mise en ligne (voir note dans script.js).</p>
+    </div>
+  </section>
+
   <!-- FILIÈRES -->
   <section class="section" id="filieres">
     <div class="wrap">
@@ -117,8 +144,53 @@
     </div>
   </section>
 
+  <!-- GALERIE / VIE ACADÉMIQUE -->
+  <section class="section section--paper" id="galerie">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--blue">Vie académique</p>
+      <h2 class="section-title">L'ISMGL en images</h2>
+      <p class="section-lead">Collations des grades, compétitions entrepreneuriales et rencontres institutionnelles : un aperçu du quotidien de nos étudiants et de notre équipe.</p>
+
+      <div class="gallery-grid">
+        <button class="gallery-item gallery-item--tall" data-caption="La direction de l'ISMGL en séance de travail">
+          <img src="assets/gallery/dg-bwenge.jpg" alt="Direction de l'ISMGL en réunion de travail" loading="lazy">
+          <span class="gallery-overlay">La direction de l'ISMGL en séance de travail</span>
+        </button>
+        <button class="gallery-item" data-caption="Collation des grades — remise des diplômes">
+          <img src="assets/gallery/collation-grades.jpg" alt="Collation des grades à l'ISMGL" loading="lazy">
+          <span class="gallery-overlay">Collation des grades — remise des diplômes</span>
+        </button>
+        <button class="gallery-item" data-caption="Une promotion de diplômés de l'ISMGL">
+          <img src="assets/gallery/promotion-diplomes.jpg" alt="Promotion de diplômés de l'ISMGL en toge" loading="lazy">
+          <span class="gallery-overlay">Une promotion de diplômés de l'ISMGL</span>
+        </button>
+        <button class="gallery-item" data-caption="Nos étudiants lauréats de la Compétition Inter-Universitaire d'Entrepreneuriat">
+          <img src="assets/gallery/competition-entrepreneuriat.jpg" alt="Étudiants ISMGL lauréats d'une compétition d'entrepreneuriat" loading="lazy">
+          <span class="gallery-overlay">Lauréats de la Compétition Inter-Universitaire d'Entrepreneuriat</span>
+        </button>
+        <button class="gallery-item gallery-item--tall" data-caption="Un étudiant de l'ISMGL prend la parole lors d'un événement institutionnel">
+          <img src="assets/gallery/intervention-etudiant.jpg" alt="Étudiant de l'ISMGL prenant la parole au micro" loading="lazy">
+          <span class="gallery-overlay">Prise de parole lors d'un événement institutionnel</span>
+        </button>
+        <button class="gallery-item" data-caption="La grande famille ISMGL réunie pour la collation des grades">
+          <img src="assets/gallery/famille-etudiants.jpg" alt="Groupe de diplômés et de l'équipe pédagogique de l'ISMGL" loading="lazy">
+          <span class="gallery-overlay">La grande famille ISMGL réunie</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Fermer l'image">&times;</button>
+    <figure class="lightbox-figure">
+      <img id="lightboxImage" src="" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+  </div>
+
   <!-- ADMISSIONS -->
-  <section class="section section--paper" id="admissions">
+  <section class="section" id="admissions">
     <div class="wrap admissions-grid">
       <div>
         <p class="eyebrow eyebrow--lake">Rejoindre l'ISMGL</p>
